@@ -1,0 +1,5 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+NEI.BL <- subset(NEI, fips == "24510" )
+ytotal.BL <- aggregate(NEI.BL$Emissions, by=list(NEI.BL$year), FUN=sum)
+plot(ytotal.BL, type="o", xlab="", ylab="Emissions, tons", ylim=c(0,1.1*max(ytotal.BL[,2])), xaxt="n")
+axis(1,ytotal.BL[,1],ytotal.BL[,1])
