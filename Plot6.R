@@ -23,6 +23,6 @@ png(filename="Plot6.png", width=640, bg="transparent")
     scale_x_continuous(breaks=c(1999,2002,2005,2008)) + coord_cartesian(xlim=c(1998,2009)) +
     scale_y_continuous(breaks=unique(ylabels), minor_breaks=NULL) +
     labs(x=NULL, y="Emissions, tons") + 
-    ggtitle(expression(paste("PM"[2.5]," emissions in Baltimore City, types of sources"))) +
+    ggtitle(expression(paste("PM"[2.5]," emissions from motor vehicle sources"))) +
     theme_bw()
 dev.off()

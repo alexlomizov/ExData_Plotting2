@@ -15,6 +15,6 @@ png(filename="Plot3.png", width=640, bg="transparent")
       geom_hline(aes(yintercept=hlines[,1]), hlines, color="red", linetype="dashed") +
       scale_x_continuous(breaks=c(1999,2002,2005,2008)) + coord_cartesian(xlim=c(1998,2009)) +
       labs(x=NULL, y="Emissions, tons") + 
-      ggtitle(expression(paste("PM"[2.5]," emissions in Baltimore City, types of sources"))) +
+      ggtitle(expression(paste("PM"[2.5]," emissions in Baltimore City by types of sources"))) +
       theme_bw()
 dev.off()
