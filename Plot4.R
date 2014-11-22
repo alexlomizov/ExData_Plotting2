@@ -5,7 +5,7 @@ SCC.CoalComb <- SCC$SCC[grep("Coal",SCC$SCC.Level.Three[grep("Combustion",SCC$SC
 NEI.CoalComb <- subset(NEI, SCC %in% SCC.CoalComb)
 ytotal.CoalComb <- aggregate(Emissions ~ year, NEI.CoalComb, sum)
 
-png(filename="Plot4.png", width=640, bg="transparent")
+png(filename="Plot4.png", width=640)
   with(ytotal.CoalComb, {
     plot(year, Emissions, type="o", ylim=c(0,max(Emissions)), axes=FALSE, ann=FALSE)
     title(expression(paste("PM"[2.5],

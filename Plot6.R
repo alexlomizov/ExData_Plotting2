@@ -1,19 +1,18 @@
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-SCC.MotVh<- SCC$SCC[grep("Vehicles", SCC$SCC.Level.Two)]
+SCC.MotVh <- SCC$SCC[grep("Vehicles", SCC$SCC.Level.Two)]
 NEI.BLLA.MotVh <- subset(NEI, (fips == "24510" | fips == "06037") & SCC %in% SCC.MotVh)
 NEI.BLLA.MotVh$County[NEI.BLLA.MotVh$fips == "24510"] <- "Baltimore City"
 NEI.BLLA.MotVh$County[NEI.BLLA.MotVh$fips == "06037"] <- "Los Angeles County"
 ytotal.BLLA.MotVh <- aggregate(Emissions ~ County + year, NEI.BLLA.MotVh, sum)
 
+library(ggplot2)
+g <- ggplot(ytotal.BLLA.MotVh, aes(year,Emissions))
 hlines <- ytotal.BLLA.MotVh[ytotal.BLLA.MotVh$year == 2008, c(3,2,1)]
 ylabels <- trunc(c(max(ytotal.BLLA.MotVh$Emissions), min(ytotal.BLLA.MotVh$Emissions),
                    ytotal.BLLA.MotVh$Emissions[ytotal.BLLA.MotVh$year == 1999 |
-                                                  ytotal.BLLA.MotVh$year == 2008]), 0)  
-
-library(ggplot2)
-g <- ggplot(ytotal.BLLA.MotVh, aes(year,Emissions))
+                                               ytotal.BLLA.MotVh$year == 2008]), 0)  
 
 png(filename="Plot6.png", width=640, bg="transparent")
   g + geom_line() + 

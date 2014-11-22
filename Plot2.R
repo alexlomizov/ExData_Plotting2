@@ -3,7 +3,7 @@ NEI <- readRDS("summarySCC_PM25.rds")
 NEI.BL <- subset(NEI, fips == "24510" )
 ytotal.BL <- aggregate(Emissions ~ year, NEI.BL, sum)
 
-png(filename="Plot2.png", width=640, bg="transparent")
+png(filename="Plot2.png", width=640)
   with(ytotal.BL, {
     plot(year, Emissions, type="o", ylim=c(0,max(Emissions)), axes=FALSE, ann=FALSE)
     title(main=expression(paste("Total emissions from PM"[2.5]," in Baltimore City")))

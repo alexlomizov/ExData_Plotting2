@@ -1,7 +1,7 @@
 NEI <- readRDS("summarySCC_PM25.rds")
 ytotal <- aggregate(Emissions ~ year, NEI, sum)
 
-png(filename="Plot1.png", width=640, bg="transparent")
+png(filename="Plot1.png", width=640)
   with(ytotal, {
     plot(year, Emissions, type="o", ylim=c(0,max(Emissions)), axes=FALSE, ann=FALSE)
     title(expression(paste("Total emissions from PM"[2.5]," in the United States")))
