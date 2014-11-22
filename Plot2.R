@@ -1,4 +1,5 @@
 NEI <- readRDS("summarySCC_PM25.rds")
+
 NEI.BL <- subset(NEI, fips == "24510" )
 ytotal.BL <- aggregate(Emissions ~ year, NEI.BL, sum)
 
